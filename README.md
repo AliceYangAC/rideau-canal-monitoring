@@ -68,7 +68,7 @@ Deliver a user‑friendly dashboard hosted on Vercel, built with Dash (Plotly), 
 ## System Architecture
 
 ![alt text](architecture/diagram.png)
-
+```ascii
 +-------------------+
 | IoT Devices       |
 | (Simulated:       |
@@ -111,7 +111,7 @@ Deliver a user‑friendly dashboard hosted on Vercel, built with Dash (Plotly), 
 | Live safety       |   | Historical trend  |
 | badges & status   |   | charts            |
 +-------------------+   +-------------------+
-
+```
 ---
 ### Azure Services
 
