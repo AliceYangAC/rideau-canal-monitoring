@@ -69,6 +69,49 @@ Deliver a user‑friendly dashboard hosted on Vercel, built with Dash (Plotly), 
 
 ![alt text](architecture/diagram.png)
 
++-------------------+
+| IoT Devices       |
+| (Simulated:       |
+|  Dow's Lake,      |
+|  Fifth Ave, NAC)  |
++---------+---------+
+          |
+          v
++-------------------+
+| Azure IoT Hub     |
+| (telemetry ingest)|
++---------+---------+
+          |
+          v
++-------------------+
+| Azure Stream      |
+| Analytics         |
+| (5-min tumbling   |
+|  window agg)      |
++---------+---------+
+          |
+          +-------------------+
+          |                   |
+          v                   v
++-------------------+   +-------------------+
+| Cosmos DB         |   | Blob Storage      |
+| (fast query for   |   | (historical data  |
+|  dashboard)       |   |  archive)         |
++---------+---------+   +---------+---------+
+          |                       |
+          v                       |
++-------------------+             |
+| Vercel            |             |
+| (Dash dashboard   |             |
+|  visualization)   |             |
++-------------------+             |
+          |                       |
+          v                       v
++-------------------+   +-------------------+
+| Live safety       |   | Historical trend  |
+| badges & status   |   | charts            |
++-------------------+   +-------------------+
+
 ---
 ### Azure Services
 
@@ -111,7 +154,7 @@ Deliver a user‑friendly dashboard hosted on Vercel, built with Dash (Plotly), 
 - Aggregated results are written to Cosmos DB as historical data
 - Supports trend analysis and long-term reporting.
 
-#### Azure Web App Service/Vercel App
+#### Vercel App
 
 - Dash (Plotly) dashboard is hosted on Vercel, visualizing:
    1. Real-time readings and safety badges per location
@@ -211,7 +254,7 @@ I deployed the app on Vercel by connecting the Github repo to a new project. The
 
 - **Video Demo:** [YouTube](https://youtu.be/FqjUoSnanKY)
 
-## Setup Instructions
+## Setup
 
 ### Prerequisites
 
@@ -220,8 +263,7 @@ Ensure you have the following:
 #### Local Development
 
 - **Python 3.13+**
-- **pip** 
-- **venv**
+- **pip** for dependency management
 
 #### Azure Cloud Resources
 
@@ -233,7 +275,7 @@ Ensure you have the following:
 
 ---
 
-### High-Level/Initial Setup (Pre-Deployment)
+### High-Level Installation (Pre-Deployment)
 
 #### 1. Clone the Repos
 
@@ -290,7 +332,7 @@ Follow the instructions in the READMEs below for deploying Azure services.
 ![alt text](screenshots/image-7.png)
 - Dashboard running locally (showing live data)
 ![alt text](screenshots/image-3.png)
-- Dashboard deployed on Azure App Service
+- Dashboard deployed on Vercel
 ![alt text](screenshots/image-11.png)
 ![alt text](screenshots/image-10.png)
 
@@ -306,7 +348,7 @@ The pipeline demonstrates reliable E2E data streaming from IoT device simulation
 
 When deploying code from repo, I could not successfully get a working dashboard application through Azure Web App Service. I plan to attempt deploying from container next, but I believe the reason is because Dash is built on Flask, which requires `gunicorn` to startup in App Service. I will continue to troubleshoot the issue. For now, with your permission, I was able to successfully deploy from repo onto Vercel, and the app worked out the box after configuring the environment variables in the settings.
 
-##  AI Tools Disclosure
+## AI Tools Disclosure
 
 I used Copilot to generate CSS for the aesthetic for the dashboard, for debugging (particularly when trying to deploy on App Service), and to summarize parts of the report. I should note that I still reworded the summaries to better reflect my thoughts.
 
