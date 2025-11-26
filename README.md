@@ -350,8 +350,8 @@ When deploying code from repo, I could not successfully get a working dashboard 
 
 ## AI Tools Disclosure
 
-I used Copilot to generate CSS for the aesthetic for the dashboard, for debugging (particularly when trying to deploy on App Service), and to summarize parts of the report. I should note that I still reworded the summaries to better reflect my thoughts.
+I used Copilot to generate CSS for the aesthetic for the dashboard, for debugging (particularly when trying to deploy on App Service), and to summarize parts of the report, like the overview or troubleshooting sections. This is because I wanted to include potential troubleshooting scenarios that I did not personally encounter, but others may. I made sure to reword the summaries to better reflect my thoughts.
 
-## **References**
+## References
 
 [Dash documentation](https://dash.plotly.com/)
