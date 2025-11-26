@@ -21,4 +21,4 @@
 
 ## Demo
 
-- **Video Demo:** [YouTube](https://youtu.be/UuQqs41uXmc)
+- **Video Demo:** [YouTube](https://youtu.be/FqjUoSnanKY)
