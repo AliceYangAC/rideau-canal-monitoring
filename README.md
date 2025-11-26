@@ -125,7 +125,7 @@ Deliver a user‑friendly dashboard hosted on Vercel, built with Dash (Plotly), 
 
 **URL:** [sensor simulation repo](https://github.com/aliceyangac/rideau-canal-sensor-simulation)
 
-I modified the IoT Hub demo code from class for one simulated device to instead connect 3 devices to IoT Hub, `dows-lake`, `fifth-avenue`, and `nac`. The Python script simulates telemetry data from three different locations, Dow's Lake, Fifth Avenue, and NAC, sending data to Azure IoT Hub every 10 seconds on loop until the connection is broken by keyboard. The connection strings for each location are loaded from a .env file located in the same directory as this script.
+I modified the IoT Hub demo code from class for one simulated device to instead connect 3 devices to IoT Hub, `dows-lake`, `fifth-avenue`, and `nac`. The Python script simulates telemetry data from three different locations, Dow's Lake, Fifth Avenue, and NAC, sending data to Azure IoT Hub every 10 seconds on loop until the connection is broken by keyboard. The connection strings for each location are loaded from a `.env` file located in the same directory as this script.
 
 ### Azure IoT Hub configuration
 
@@ -133,7 +133,7 @@ I registered the 3 devices, `dows-lake`, `fifth-avenue`, and `nac`, in IoT hub a
 
 ### Stream Analytics job (include query)
 
-The query is included under /stream-analytics and can be seen below:
+The query is included under `/stream-analytics` and can be seen below:
 ```sql
 SELECT 
     CONCAT(c.location, '-', MAX(TRY_CAST(c.timestamp AS datetime))) as id,
@@ -251,7 +251,7 @@ python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 ```
 
-### 3. Install Dependencies per Repo
+#### 3. Install Dependencies per Repo
 
 Ensure you `pip install` into the `venv` in both repos.
 
@@ -259,51 +259,16 @@ Ensure you `pip install` into the `venv` in both repos.
 pip install -r requirements.txt
 ```
 
-### 4. Configure Environment Variables
+#### 4. Configure Environment Variables
 
 Copy `.env.example` as `.env` in both folders and replace the placeholder values later once you set up Azure services.
 
-### 6. Detailed Setup/Next Steps
+#### 5. Detailed Setup/Next Steps
 
 Follow the instructions in the READMEs below for deploying Azure services.
 
 - **URL:** [sensor simulation repo](https://github.com/aliceyangac/rideau-canal-sensor-simulation)
 - **URL:** [dashboard repo](https://github.com/aliceyangac/rideau-canal-dashboard)
-
-----------------------------------------
-### Deploy and Configure Azure Services
-
-Use **default settings** except for the following:
-
-#### IoT Hub
-
-1. Basics -> Tier: **Free**
-
-#### Stream Analytics Job
-
-1. Basics -> Streaming Units: **1/3 (as low as possible)**
-
-#### Azure Cosmos DB for NoSQL
-
-1. Basics -> Workload Type: **Learning**
-
-### Run Locally
-
-Sensor simulation:
-
-```bash
-python sensor_simulation.py
-```
-
-Dashboard:
-
-```bash
-python app.py
-```
-
-Access the dashboard at [http://localhost:8050](http://localhost:8050)
-
-------------------------------------------------------------
 
 ## Results and Analysis
 
